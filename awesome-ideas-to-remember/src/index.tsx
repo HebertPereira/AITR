@@ -22,19 +22,25 @@ createServer({
   routes() {
     this.namespace = 'api';
 
-    this.get(`/ideas`, () => {
-      return this.schema.all('');
+    this.get("/ideas", () => {
+      return this.schema.all('ideas');
     });
 
-    this.post(`/ideas`, (schema, request) => {
+    this.post("/ideas", (schema, request) => {
       const data = JSON.parse(request.requestBody);
 
-      return schema.create('idea', data);
+      return schema.create('ideas', data);
     });
 
-    this.patch(`/idea/:id`, (schema, request) => {
+    this.patch("/ideas/:id", (schema, request) => {
 
       return schema;
+    });
+
+    this.delete("/ideas/:id", (schema, request): any => {
+      const id = request.params.id;
+
+      return schema.find('ideas', id)?.destroy();
     });
   }
 });

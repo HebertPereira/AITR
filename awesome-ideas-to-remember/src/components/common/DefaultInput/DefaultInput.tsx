@@ -10,11 +10,13 @@ import { ReactComponent as SearchIcon } from '../../../assets/icons/search.svg';
 interface DefaultInputProps {
     type?: "checkbox" | "password";
     searchType?: boolean;
+    placeholder: string;
 }
 
 const DefaultInput = ({
     type,
-    searchType
+    searchType,
+    placeholder
 }: DefaultInputProps) => {
     const [isFocused, setIsFused] = useState(false);
     return (
@@ -27,7 +29,8 @@ const DefaultInput = ({
             {searchType ? <SearchIcon title="Lupa - Buscar" /> : ""}
             <DefaultInputContent
                 type={type ? type : "text"}
-
+                data-testid="default-input-test"
+                placeholder={placeholder}
             />
         </DefaultInputContainer>
     );

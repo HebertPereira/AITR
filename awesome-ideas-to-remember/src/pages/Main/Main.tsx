@@ -1,7 +1,9 @@
 import React from 'react';
 
-import Card from './fragments/Card';
-import SearchBar from './fragments/SeachBar';
+import { useIdeas, IdeaContextProps } from '../../providers/Auth';
+
+import Card from './fragments/Card/Card';
+import SearchBar from './fragments/SearchBar/SeachBar';
 
 import {
     MainContainer,
@@ -9,11 +11,16 @@ import {
 } from './styles';
 
 function Main() {
+    const { ideas }: IdeaContextProps = useIdeas();
+
+
     return (
         <MainContainer>
             <MainContent>
                 <SearchBar />
-                <Card />
+                {ideas?.map((item, index) => {
+                    return <Card idea={item} key={index} />
+                })}
             </MainContent>
         </MainContainer>
     );
