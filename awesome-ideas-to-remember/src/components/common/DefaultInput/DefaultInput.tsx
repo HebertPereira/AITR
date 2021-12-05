@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 
 import {
     DefaultInputContainer,
@@ -11,12 +11,17 @@ interface DefaultInputProps {
     type?: "checkbox" | "password";
     searchType?: boolean;
     placeholder: string;
+    value: string | number;
+    onChange: (value: ChangeEvent<HTMLInputElement>) => void;
+    defaultValue?: string | number;
 }
 
 const DefaultInput = ({
     type,
     searchType,
-    placeholder
+    placeholder,
+    onChange,
+    defaultValue
 }: DefaultInputProps) => {
     const [isFocused, setIsFused] = useState(false);
     return (
@@ -31,6 +36,8 @@ const DefaultInput = ({
                 type={type ? type : "text"}
                 data-testid="default-input-test"
                 placeholder={placeholder}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => onChange(e)}
+                defaultValue={defaultValue}
             />
         </DefaultInputContainer>
     );

@@ -5,19 +5,19 @@ import { DefaultButtonContainer } from './styles';
 interface DefaultButtonProps {
     text: string;
     type?: "button" | "submit" | "reset";
-    click?: () => void;
+    onClick?: () => void;
     icon?: ReactNode;
 }
 const DefaultButton = ({
     text,
     type,
-    click,
+    onClick,
     icon,
 }: DefaultButtonProps) => {
     return (
         <DefaultButtonContainer
             type={type ? type : "button"}
-            onClick={click}
+            onClick={onClick}
             data-testid="button-test"
         >
             {icon}

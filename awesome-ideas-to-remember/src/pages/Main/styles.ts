@@ -7,6 +7,7 @@ export const MainContainer = styled.main`
     flex-direction: column;
     width: 100%;
     height: 100%;
+    height: calc(100vh - 5rem);
 `;
 
 export const MainContent = styled.div`
@@ -16,8 +17,9 @@ export const MainContent = styled.div`
     flex-direction: column;
     width: 100%;
     max-width: 1000px;
+    height: 100%;
 
-    padding: 1rem;
+    padding-top: 1rem;
 
     > h1 {
         font-size: 3rem;
@@ -32,6 +34,21 @@ export const MainContent = styled.div`
     > div {
         display: flex;
         width: 100%;
+    }
+`;
+
+export const MainContentCarList = styled.div`
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding: 0 0.5rem 0 0;
+
+    > div + div {
+        margin-top: 1rem;
     }
 `;
 
@@ -89,5 +106,19 @@ export const CardContainer = styled.div`
 
     > span {
         font-weight: 600;
+    }
+`;
+
+export const CardBoxButton = styled.div`
+    display: flex;
+
+    > button {
+        background-color: var(--purple-500);
+        color: var(--dark-100);
+    }
+
+    > button + button {
+        background-color: transparent;
+        color: var(--dark-1000);
     }
 `;

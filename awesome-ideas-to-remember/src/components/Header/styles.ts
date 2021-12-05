@@ -4,6 +4,7 @@ export const HeaderContainer = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 5rem;
 
     background-color: var(--purple-500);
     color: var(--dark-100);

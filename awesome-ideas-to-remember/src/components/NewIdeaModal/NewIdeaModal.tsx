@@ -1,5 +1,7 @@
-import React, { FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
+import { TiPlus } from 'react-icons/ti';
 import { FiX } from 'react-icons/fi';
+import { toast } from 'react-toastify';
 import Modal from 'react-modal';
 
 import { IdeaContextProps, useIdeas } from '../../providers/Auth';
@@ -9,38 +11,41 @@ import DefaultButton from '../common/DefaultButton/DefaultButton';
 import DefaultTextField from '../common/DefaultTextField/DefaultTextField';
 
 import {
+    NewIdeaModalContainer,
     NewIdeaModalInputBox,
-    NewTransactionModalContainer,
 } from './styles';
 
-interface NewTransactionModalProps {
+interface NewIdeaModalProps {
     isOpen: boolean;
     onRequestClose: () => void;
 }
 
-function NewIdeaModal({ isOpen, onRequestClose }: NewTransactionModalProps) {
-    // const { createIdea }: IdeaContextProps = useIdeas();
+function NewIdeaModal({ isOpen, onRequestClose }: NewIdeaModalProps) {
+    const {
+        createIdea
+    }: IdeaContextProps = useIdeas();
 
     const [title, setTitle] = useState('');
-    const [description, setDescription] = useState(0);
-    const [category, setCategory] = useState('');
-    const [type, setType] = useState('deposit');
+    const [description, setDescription] = useState('');
+    const [tags, setTags] = useState('');
 
-    const handleCreateNewTransaction = async (event: FormEvent) => {
+    const handleCreateNewIdea = async (event: FormEvent) => {
         event.preventDefault();
-        // await createTransaction({
-        //     title,
-        //     amount,
-        //     category,
-        //     type
-        // });
+        if (title !== "" && description !== "" && tags !== "") {
+            await createIdea({
+                title,
+                description,
+                tags: tags.split(',')
+            });
 
-        // setTitle('')
-        // setAmount(0)
-        // setCategory('')
-        // setType('deposit')
-        // onRequestClose();
+            setTitle('')
+            setDescription('')
+            setTags('')
+            onRequestClose();
+        }
+        else return toast.warn('Todos os campos precisam estar preenchidos!')
     }
+
     return (
         <Modal
             isOpen={isOpen}
@@ -51,27 +56,41 @@ function NewIdeaModal({ isOpen, onRequestClose }: NewTransactionModalProps) {
             <button type="button" onClick={onRequestClose} className="react-modal-close">
                 <FiX />
             </button>
-            <NewTransactionModalContainer onSubmit={handleCreateNewTransaction}>
+            <NewIdeaModalContainer onSubmit={handleCreateNewIdea}>
+                <h2>
+                    <TiPlus color="#6805a6" />
+                    Nova Ideia
+                </h2>
                 <NewIdeaModalInputBox>
                     <span>Título da ideia</span>
                     <DefaultInput
                         placeholder="Digite o Titulo da ideia"
+                        value={title}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
                     />
                 </NewIdeaModalInputBox>
                 <NewIdeaModalInputBox isDescription>
                     <span>Descrição da ideia</span>
                     <DefaultTextField
                         placeholder="Digite a Descrição"
+                        value={description}
+                        onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setDescription(e.target.value)}
                     />
                 </NewIdeaModalInputBox>
                 <NewIdeaModalInputBox>
-                    <span>Tags da ideia <strong>Obs.: Separadas por virgula.</strong></span>
+                    <span>Tags da ideia <strong>Ex.: Nasa,SpaceX,Virgin Galactic</strong></span>
                     <DefaultInput
                         placeholder="Digite as Tags da ideia"
+                        value={tags}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => setTags(e.target.value)}
                     />
                 </NewIdeaModalInputBox>
-                <DefaultButton text="Adicionar" />
-            </NewTransactionModalContainer>
+                <DefaultButton
+                    text="Adicionar"
+                    type="submit"
+                    icon={<TiPlus />}
+                />
+            </NewIdeaModalContainer>
         </Modal>
     );
 }

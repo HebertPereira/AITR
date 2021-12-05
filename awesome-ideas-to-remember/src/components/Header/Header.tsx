@@ -19,7 +19,7 @@ const Header = ({
             </div>
             <DefaultButton
                 text="Nova Ideia"
-                click={() => onOpenNewIdeaModal()}
+                onClick={() => onOpenNewIdeaModal()}
             />
         </HeaderContainer>
     );

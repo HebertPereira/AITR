@@ -15,8 +15,22 @@ export default createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         outline: 0;
-        font-family: 'Manrope', sans-serif;
+        font-family: 'Roboto', sans-serif;
         font-weight: 400;
+
+        ::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+
+        ::-webkit-scrollbar {
+            width: 0.5vh;
+            height: 0.5vh;
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--purple-500);
+        } 
     }
 
     html, body, #root {
@@ -36,7 +50,7 @@ export default createGlobalStyle`
         border: 0;
     }
 
-    .react-modal-overlay{
+    .react-modal-overlay {
         background-color: rgba(0, 0, 0, 0.5);
         position: fixed;
         top: 0;
@@ -48,7 +62,8 @@ export default createGlobalStyle`
         align-items: center;
         justify-content: center;
     }
-    .react-modal-content{
+
+    .react-modal-content {
         width: 100%;
         max-width: 576px;
         position: relative;
@@ -58,7 +73,8 @@ export default createGlobalStyle`
         padding: 3rem;
         border-radius: 0.25rem;
     }
-    .react-modal-close{
+
+    .react-modal-close {
         position: absolute;
         right: 1.5rem;
         top: 1.5rem;

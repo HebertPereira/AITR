@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface NewIdeaModalStyleProps {
-   isDescription?: boolean;
+    isDescription?: boolean;
 }
 
 export const NewIdeaModalContainer = styled.form`

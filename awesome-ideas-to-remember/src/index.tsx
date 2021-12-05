@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createServer, Model } from 'miragejs';
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import App from './App';
 
 createServer({
@@ -14,7 +18,25 @@ createServer({
           id: 1,
           title: "Criar um app de lista de itens da geladeira",
           description: "Criar um app para listar os itens que tenho na minha geladeira para que não estrague as coisas.",
-          tags: ['economia', 'react-native', 'opne-source', 'nodejs']
+          tags: ['economia', 'react-native', 'open-source', 'nodejs']
+        },
+        {
+          id: 2,
+          title: "Criar um app de lista de itens da geladeira",
+          description: "Criar um app para listar os itens que tenho na minha geladeira para que não estrague as coisas.",
+          tags: ['economia', 'react-native', 'open-source', 'nodejs']
+        },
+        {
+          id: 3,
+          title: "Criar um app de lista de itens da geladeira",
+          description: "Criar um app para listar os itens que tenho na minha geladeira para que não estrague as coisas.",
+          tags: ['economia', 'react-native', 'open-source', 'nodejs']
+        },
+        {
+          id: 4,
+          title: "Criar um app de lista de itens da geladeira",
+          description: "Criar um app para listar os itens que tenho na minha geladeira para que não estrague as coisas.",
+          tags: ['economia', 'react-native', 'open-source', 'nodejs']
         }
       ]
     })
@@ -32,9 +54,11 @@ createServer({
       return schema.create('ideas', data);
     });
 
-    this.patch("/ideas/:id", (schema, request) => {
+    this.patch("/ideas/:id", (schema, request): any => {
+      const newAttrs = JSON.parse(request.requestBody)
+      const id = request.params.id;
 
-      return schema;
+      return schema.find('ideas', id)?.update(newAttrs);
     });
 
     this.delete("/ideas/:id", (schema, request): any => {
@@ -47,6 +71,7 @@ createServer({
 
 ReactDOM.render(
   <React.StrictMode>
+    <ToastContainer position="bottom-right" />
     <App />
   </React.StrictMode>,
   document.getElementById('root')

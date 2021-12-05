@@ -3,11 +3,24 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Main from '../pages/Main/Main';
 
-function GlobalRoutes() {
+interface GlobalRoutesProps {
+    isOpenCreateModal: boolean,
+    handleCloseIdeaModal: () => void;
+}
+
+function GlobalRoutes({
+    isOpenCreateModal,
+    handleCloseIdeaModal,
+}: GlobalRoutesProps) {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Main />} />
+                <Route path="/" element={
+                    <Main
+                        isOpenCreateModal={isOpenCreateModal}
+                        handleCloseIdeaModal={handleCloseIdeaModal}
+                    />
+                } />
             </Routes>
         </BrowserRouter>
     );
