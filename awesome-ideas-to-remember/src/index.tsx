@@ -18,25 +18,7 @@ createServer({
           id: 1,
           title: "Criar um app de lista de itens da geladeira",
           description: "Criar um app para listar os itens que tenho na minha geladeira para que não estrague as coisas.",
-          tags: ['economia', 'react-native', 'open-source', 'nodejs']
-        },
-        {
-          id: 2,
-          title: "Criar um app de lista de itens da geladeira",
-          description: "Criar um app para listar os itens que tenho na minha geladeira para que não estrague as coisas.",
-          tags: ['economia', 'react-native', 'open-source', 'nodejs']
-        },
-        {
-          id: 3,
-          title: "Criar um app de lista de itens da geladeira",
-          description: "Criar um app para listar os itens que tenho na minha geladeira para que não estrague as coisas.",
-          tags: ['economia', 'react-native', 'open-source', 'nodejs']
-        },
-        {
-          id: 4,
-          title: "Criar um app de lista de itens da geladeira",
-          description: "Criar um app para listar os itens que tenho na minha geladeira para que não estrague as coisas.",
-          tags: ['economia', 'react-native', 'open-source', 'nodejs']
+          tags: 'economia,react-native,open-source,nodejs'
         }
       ]
     })

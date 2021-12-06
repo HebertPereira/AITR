@@ -7,12 +7,14 @@ interface DefaultTextFieldProps {
     value?: string;
     placeholder: string;
     onChange: (value: ChangeEvent<HTMLTextAreaElement>) => void;
+    tabIndex?: number;
 }
 
 const DefaultTextField = ({
     placeholder,
     onChange,
-    value
+    value,
+    tabIndex
 }: DefaultTextFieldProps) => {
     const [isFocused, setIsFused] = useState(false);
     return (
@@ -23,6 +25,7 @@ const DefaultTextField = ({
             data-testid="default-textField-test"
             placeholder={placeholder}
             value={value}
+            tabIndex={tabIndex}
             onChange={(e: ChangeEvent<HTMLTextAreaElement>) => onChange(e)}
         />
     );

@@ -19,6 +19,8 @@ const Header = ({
             </div>
             <DefaultButton
                 text="Nova Ideia"
+                tabIndex={1}
+                aria-label="Clique para criar nova ideia."
                 onClick={() => onOpenNewIdeaModal()}
             />
         </HeaderContainer>

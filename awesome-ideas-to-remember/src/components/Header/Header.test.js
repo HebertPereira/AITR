@@ -1,21 +1,21 @@
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import Header from "./Header";
 
-describe("when rendered with a name prop", () => {
-    it("should paste it into the greetings text", () => {
-        const { getByText } = render(<Header />);
-        expect(getByText('Awesome ideas to remember')).toBeInTheDocument();
-        expect(getByText('AITR')).toBeInTheDocument();
+describe("when rendered verify Header", () => {
+    it("should verify texts in this component", () => {
+        render(<Header onOpenNewIdeaModal={() => null} />);
+        expect(screen.getByText('Awesome ideas to remember')).toBeInTheDocument();
+        expect(screen.getByText('AITR')).toBeInTheDocument();
     });
 
-    it("click button for add a new idea", () => {
-        const { getByText } = render(<Header />)
+    it("should verify click in button for add a new idea", () => {
+        render(<Header onOpenNewIdeaModal={() => null} />)
         fireEvent(
-            getByText('Nova Ideia'),
+            screen.getByText('Nova Ideia'),
             new MouseEvent('click', {
                 bubbles: true,
                 cancelable: true,
             })
-        )
+        );
     })
 });

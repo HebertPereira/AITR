@@ -19,14 +19,22 @@ const Card = ({
     handleOpenUpdateIdeaModal
 }: CardProps) => {
     const { setCurrentIdea } = useIdeas();
+
+    const formatTags = (tagString: string) => {
+        const tag = tagString.split(',');
+        return tag.map((item) => `#${item}, `)
+    }
+
     return (
-        <CardContainer>
+        <CardContainer data-testid="card-test">
             <div>
                 <h2>{idea.title}</h2>
                 <CardBoxButton>
                     <DefaultButton
                         text="editar"
                         icon={<TiPencil />}
+                        tabIndex={1}
+                        aria-label="Clique para editar ideia."
                         onClick={() => {
                             handleOpenUpdateIdeaModal();
                             setCurrentIdea(idea);
@@ -35,6 +43,8 @@ const Card = ({
                     <DefaultButton
                         text="remover"
                         icon={<FiX />}
+                        tabIndex={2}
+                        aria-label="Clique para remover ideia."
                         onClick={() => {
                             handleOpenDeleteIdeaModal();
                             setCurrentIdea(idea);
@@ -43,7 +53,7 @@ const Card = ({
                 </CardBoxButton>
             </div>
             <p>{idea.description}</p>
-            <span data-testid="items-test">{idea.tags.map((item) => `#${item}, `)}</span>
+            <span data-testid="tags-test">{formatTags(idea.tags)}</span>
         </CardContainer>
     );
 }

@@ -35,7 +35,7 @@ function NewIdeaModal({ isOpen, onRequestClose }: NewIdeaModalProps) {
             await createIdea({
                 title,
                 description,
-                tags: tags.split(',')
+                tags: tags
             });
 
             setTitle('')
@@ -53,18 +53,27 @@ function NewIdeaModal({ isOpen, onRequestClose }: NewIdeaModalProps) {
             overlayClassName="react-modal-overlay"
             className="react-modal-content"
         >
-            <button type="button" onClick={onRequestClose} className="react-modal-close">
+            <button
+                type="button"
+                onClick={onRequestClose}
+                className="react-modal-close"
+                aria-label="Clique para fechar o pop-up de criação de ideia."
+                tabIndex={1}
+                data-testid="new-idea-x-button-test"
+            >
                 <FiX />
             </button>
             <NewIdeaModalContainer onSubmit={handleCreateNewIdea}>
                 <h2>
-                    <TiPlus color="#6805a6" />
+                    <TiPlus color="#6805a6" aria-label="Icone de adição." />
                     Nova Ideia
                 </h2>
                 <NewIdeaModalInputBox>
                     <span>Título da ideia</span>
                     <DefaultInput
                         placeholder="Digite o Titulo da ideia"
+                        tabIndex={1}
+                        aria-label="Digite o titulo da ideia aqui."
                         value={title}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
                     />
@@ -74,6 +83,8 @@ function NewIdeaModal({ isOpen, onRequestClose }: NewIdeaModalProps) {
                     <DefaultTextField
                         placeholder="Digite a Descrição"
                         value={description}
+                        aria-label="Digite o descrição da ideia aqui."
+                        tabIndex={2}
                         onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setDescription(e.target.value)}
                     />
                 </NewIdeaModalInputBox>
@@ -82,12 +93,16 @@ function NewIdeaModal({ isOpen, onRequestClose }: NewIdeaModalProps) {
                     <DefaultInput
                         placeholder="Digite as Tags da ideia"
                         value={tags}
+                        aria-label="Digite as tags da ideia aqui."
+                        tabIndex={3}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => setTags(e.target.value)}
                     />
                 </NewIdeaModalInputBox>
                 <DefaultButton
                     text="Adicionar"
                     type="submit"
+                    aria-label="Clique para finalizar adição da ideia."
+                    tabIndex={4}
                     icon={<TiPlus />}
                 />
             </NewIdeaModalContainer>

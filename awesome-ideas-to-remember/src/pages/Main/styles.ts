@@ -45,28 +45,28 @@ export const MainContentCarList = styled.div`
     overflow-y: auto;
     overflow-x: hidden;
 
-    padding: 0 0.5rem 0 0;
+    padding: 0 0.5rem 0.5rem 0;
 
     > div + div {
         margin-top: 1rem;
     }
 `;
 
-export const SearchBarContainer = styled.div`
+export const SearchBarContainer = styled.form`
     display: flex;
     align-items: center;
     width: 100%;
 
     padding: 2rem 0 1rem 0;
 
-    > p {
+    > section {
         display: flex;
         align-items: center;
 
         margin-left: 0.5rem;
     }
 
-    > p > input {
+    > section > input {
         margin: 0 0.5rem;
         cursor: pointer;
     }

@@ -14,6 +14,7 @@ interface DefaultInputProps {
     value: string | number;
     onChange: (value: ChangeEvent<HTMLInputElement>) => void;
     defaultValue?: string | number;
+    tabIndex?: number;
 }
 
 const DefaultInput = ({
@@ -21,7 +22,8 @@ const DefaultInput = ({
     searchType,
     placeholder,
     onChange,
-    defaultValue
+    defaultValue,
+    tabIndex
 }: DefaultInputProps) => {
     const [isFocused, setIsFused] = useState(false);
     return (
@@ -38,6 +40,7 @@ const DefaultInput = ({
                 placeholder={placeholder}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => onChange(e)}
                 defaultValue={defaultValue}
+                tabIndex={tabIndex}
             />
         </DefaultInputContainer>
     );
