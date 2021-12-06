@@ -4,20 +4,22 @@ For run this project:
 
 # Docker
 
-## `docker build -t docker-aitr .`
+## Container
+
+### `docker build -t docker-aitr .`
 
 Create your container image
 
-## `docker run -it -p 3000:3000 docker-aitr npm start`
+### `docker run -it -p 3000:3000 docker-aitr npm start`
 
 Up your container and runs the app in the development mode at port 3000.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## `docker`
+## Test
 
 For run your tests:
 
-## `docker run -it docker-aitr npm test`
+### `docker run -it docker-aitr npm test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
