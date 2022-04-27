@@ -1,25 +1,27 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import DefaultButton from "./DefaultButton";
+import React from 'react';
 
-describe("when rendered verify button", () => {
-    test("should verify button click when render", () => {
-        render(<DefaultButton />);
-        const button = screen.getByTestId('button-test');
+import DefaultButton from './DefaultButton';
 
-        fireEvent(
-            button,
-            new MouseEvent('click', {
-                bubbles: true,
-                cancelable: true,
-            })
-        );
+describe('when rendered verify button', () => {
+  test('should verify button click when render', () => {
+    render(<DefaultButton />);
+    const button = screen.getByTestId('button-test');
 
-        expect(button).toBeInTheDocument();
-    });
+    fireEvent(
+      button,
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true
+      })
+    );
 
-    test("should verify received props", () => {
-        render(<DefaultButton text={"Confirm"} />);
+    expect(button).toBeInTheDocument();
+  });
 
-        expect(screen.getByText('Confirm')).toBeInTheDocument();
-    });
+  test('should verify received props', () => {
+    render(<DefaultButton text="Confirm" />);
+
+    expect(screen.getByText('Confirm')).toBeInTheDocument();
+  });
 });

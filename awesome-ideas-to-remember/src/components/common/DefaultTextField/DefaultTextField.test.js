@@ -1,13 +1,15 @@
 import { render } from '@testing-library/react';
-import DefaultTextField from "./DefaultTextField";
+import React from 'react';
 
-describe("when rendered verify input", () => {
-    test("when rendered verify input focus", () => {
-        const { getByTestId } = render(<DefaultTextField />);
-        const textArea = getByTestId('default-textField-test');
-        textArea.focus()
+import DefaultTextField from './DefaultTextField';
 
-        expect(textArea).toBeInTheDocument();
-        expect(textArea).toHaveFocus();
-    });
+describe('when rendered verify input', () => {
+  test('when rendered verify input focus', () => {
+    const { getByTestId } = render(<DefaultTextField />);
+    const textArea = getByTestId('default-textField-test');
+    textArea.focus();
+
+    expect(textArea).toBeInTheDocument();
+    expect(textArea).toHaveFocus();
+  });
 });

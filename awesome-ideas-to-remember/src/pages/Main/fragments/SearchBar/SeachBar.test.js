@@ -1,25 +1,27 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import SearchBar from "./SeachBar";
+import React from 'react';
 
-describe("when rendered verify child components", () => {
-    test("should verify input check", () => {
-        render(<SearchBar />);
-        const input = screen.getByTestId('input-test');
-        expect(input.checked).toEqual(false);
-        fireEvent(
-            screen.getByTestId('input-test'),
-            new MouseEvent('click', {
-                bubbles: true,
-                cancelable: true,
-            })
-        );
+import SearchBar from './SeachBar';
 
-        expect(screen.getByTestId('input-test')).toBeChecked();
-    });
+describe('when rendered verify child components', () => {
+  test('should verify input check', () => {
+    render(<SearchBar />);
+    const input = screen.getByTestId('input-test');
+    expect(input.checked).toEqual(false);
+    fireEvent(
+      screen.getByTestId('input-test'),
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true
+      })
+    );
 
-    test("should verify input decription", () => {
-        render(<SearchBar />);
+    expect(screen.getByTestId('input-test')).toBeChecked();
+  });
 
-        expect(screen.getByText('Buscar somente em tags')).toBeInTheDocument();
-    });
+  test('should verify input decription', () => {
+    render(<SearchBar />);
+
+    expect(screen.getByText('Buscar somente em tags')).toBeInTheDocument();
+  });
 });

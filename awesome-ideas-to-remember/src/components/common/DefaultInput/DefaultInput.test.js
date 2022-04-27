@@ -1,13 +1,15 @@
 import { render } from '@testing-library/react';
-import DefaultInput from "./DefaultInput";
+import React from 'react';
 
-describe("when rendered verify input", () => {
-    test("should verify input focus", () => {
-        const { getByTestId } = render(<DefaultInput />);
-        const input = getByTestId('default-input-test');
-        input.focus()
+import DefaultInput from './DefaultInput';
 
-        expect(input).toBeInTheDocument();
-        expect(input).toHaveFocus();
-    });
+describe('when rendered verify input', () => {
+  test('should verify input focus', () => {
+    const { getByTestId } = render(<DefaultInput />);
+    const input = getByTestId('default-input-test');
+    input.focus();
+
+    expect(input).toBeInTheDocument();
+    expect(input).toHaveFocus();
+  });
 });
