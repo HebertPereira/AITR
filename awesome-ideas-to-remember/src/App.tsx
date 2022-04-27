@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 
+import Header from './components/Header/Header';
 import { IdeaProvider } from './providers/Auth';
 import GlobalRoutes from './routes/golbalRoutes';
 import GlobalStyles from './styles/globalStyles';
 
-import Header from './components/Header/Header';
-
 Modal.setAppElement('#root');
 
-function App() {
+function App(): JSX.Element {
   const [isOpenCreateModal, setIsOpenCreateModal] = useState(false);
 
   function handleOpenNewIdeaModal() {
@@ -23,10 +22,10 @@ function App() {
   return (
     <IdeaProvider>
       <GlobalStyles />
-      <Header onOpenNewIdeaModal={handleOpenNewIdeaModal} />
+      <Header onOpenNewIdeaModal={() => handleOpenNewIdeaModal()} />
       <GlobalRoutes
         isOpenCreateModal={isOpenCreateModal}
-        handleCloseIdeaModal={handleCloseIdeaModal}
+        handleCloseIdeaModal={() => handleCloseIdeaModal()}
       />
     </IdeaProvider>
   );

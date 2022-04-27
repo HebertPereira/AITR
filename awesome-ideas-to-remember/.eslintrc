@@ -1,0 +1,73 @@
+{
+  "root": true,
+  "extends": [
+    "prettier",
+    "airbnb",
+    "airbnb/hooks",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest/recommended",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "jest",
+    "eslint-plugin-import-helpers",
+    "@typescript-eslint"
+  ],
+  "env": {
+    "browser": true,
+    "amd": true,
+    "node": true,
+    "jest": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2020,
+    "project": "./tsconfig.json",
+    "sourceType": "module"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "linebreak-style": "off",
+    "prefer-const": "off",
+    "no-console": "off",
+    "import/no-unresolved": "off",
+    "import/extensions": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "prettier/prettier": ["error", {}, { "usePrettierrc": true }],
+    "react/jsx-filename-extension": ["warn", { "extensions": [".ts", ".tsx"] }],
+    "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
+    "import-helpers/order-imports": [
+      "error",
+      {
+        "newlinesBetween": "always",
+        "groups": [
+          ["/^react/", "/^redux/", "/react/"],
+          "module",
+          ["/^Services/", "/^Providers/", "/^Utils/"],
+          "/^Routes/",
+          ["/^Components/", "/^Pages/", "/^Containers/", "/^Common/"],
+          ["/^pages/", "/^components/", "/^common/"],
+          ["parent", "sibling", "index"],
+          "/styled-components/",
+          "/^Styles/",
+          "/^.scss/"
+        ],
+        "alphabetize": { "order": "asc", "ignoreCase": true }
+      }
+    ]
+  }
+}

@@ -1,11 +1,11 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
     :root {
         --dark-100: #F3F3F3;
         --dark-300: #BABABA;
         --dark-400: #767676;
-        --dark-1000: #000000; 
+        --dark-1000: #000000;
 
         --purple-500: #6805a6;
     }
@@ -30,7 +30,7 @@ export default createGlobalStyle`
 
         ::-webkit-scrollbar-thumb {
             background: var(--purple-500);
-        } 
+        }
     }
 
     html, body, #root {
@@ -45,7 +45,7 @@ export default createGlobalStyle`
     button {
         cursor: pointer;
     }
-    
+
     button::-moz-focus-inner {
         border: 0;
     }
@@ -72,13 +72,17 @@ export default createGlobalStyle`
 
         padding: 3rem;
         border-radius: 0.25rem;
+
+        > button:focus {
+          border: 1px solid black;
+        }
     }
 
     .react-modal-close {
         position: absolute;
         right: 1.5rem;
         top: 1.5rem;
-        
+
         background: transparent;
 
         border: 0;
